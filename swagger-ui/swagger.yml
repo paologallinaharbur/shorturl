@@ -1,0 +1,111 @@
+---
+
+swagger: '2.0'
+info:
+  title: url shortener
+  version: 1.0.0
+schemes:
+  - http
+basePath: /api
+paths:
+  /url:
+    post:
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      tags: ["Url"]
+      operationId: createUrl
+      summary: "Create a new short url. Specify the URL with the protocol, es: `http://example.com`. \n It returns a new short version of the URL that can be used as: http://endpoint/{shortURL}."
+      parameters:
+        - name: infoURL
+          in: body
+          schema:
+            $ref: "#/definitions/url"
+      responses:
+        '201':
+          description: created
+          schema:
+            $ref: "#/definitions/shorturl"
+        '500':
+          description: internal server error
+          schema:
+            $ref: "#/definitions/error"
+  /url/{shortURL}:
+    delete:
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      tags: ["Url"]
+      operationId: deleteUrl
+      summary: "Delete a already existing url. The only argument that is requested is the shortURL to be deleted."
+      parameters:
+        - in: path
+          name: shortURL
+          type: string
+          required: true
+          description: Short URL to be passed to retrieve long URL
+      responses:
+        '204':
+          description: deleted
+        '500':
+          description: internal server error
+          schema:
+            $ref: "#/definitions/error"
+        '400':
+          description: bad request
+          schema:
+            $ref: "#/definitions/error"
+    get:
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      tags: ["Url"]
+      operationId: getUrl
+      summary: "Get a already existing url. The only argument that is requested is the shortURL to be fetched."
+      parameters:
+        - in: path
+          name: shortURL
+          type: string
+          required: true
+          description: Short URL to be passed to retrieve long URL
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: "#/definitions/url"
+        '500':
+          description: internal server error
+          schema:
+            $ref: "#/definitions/error"
+definitions:
+  url:
+    type: object
+    required:
+      - url
+    properties:
+      url:
+        type: string
+        description: initial URL to be shortened
+  shorturl:
+    type: object
+    required:
+      - shorturl
+    properties:
+      shorturl:
+        type: string
+        description: shorneted URL
+  error:
+    type: object
+    required:
+       - message
+    properties:
+      code:
+        type: integer
+        format: int64
+      message:
+        type: string
+      fields:
+        type: string
