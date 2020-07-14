@@ -48,9 +48,9 @@ Navigate to `localhost:35307/swagger-ui` to visualise the UI and test APIs with 
 Navigate to `localhost:35307/metrics` to check metrics, in particular `url_redirected` keeps track of redirection since last execution
 
 There are three methods under `/api`:
- - POST `/api` that accept in the json body the URL to make shorter
- - GET `/api/{shortURL}` that returns the URL corresponding to shortURL
- - DELETE `/api/{shortURL}` that delete the URL
+ - POST `/api/url` that accept in the json body the URL to make shorter
+ - GET `/api/url/{shortURL}` that returns the URL corresponding to shortURL
+ - DELETE `/api/url/{shortURL}` that delete the URL
 
 Shortened URLs will be like `short-abcdefghil` and can be used as follows `localhost:35307/short-abcdefghil`
 
