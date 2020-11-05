@@ -40,6 +40,7 @@ Run test running:
 
 Usage
 -
+
 To execute the server clone the repo, cd into it and run:
 
 `$go run ./cmd/url-shortener-server/main.go --port 35307`
