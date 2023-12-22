@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  newrelic-agent-operator:
+  - apiVersion: v2
+    appVersion: 0.1.2
+    created: "2023-12-22T10:31:11.173762+01:00"
+    description: A Helm chart for Kubernetes
+    digest: 054c36e17e4a56ce44ec043d51f63f611def51d0e5f7486d3ed9fef13b82d819
+    name: newrelic-agent-operator
+    type: application
+    urls:
+    - https://paologallinaharbur.github.io/newrelic-agent-operator-0.0.3.tgz
+    version: 0.0.3
+generated: "2023-12-22T10:31:11.173062+01:00"
