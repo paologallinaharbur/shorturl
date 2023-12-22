@@ -9,6 +9,6 @@ entries:
     name: newrelic-agent-operator
     type: application
     urls:
-    - https://paologallinaharbur.github.io/newrelic-agent-operator-0.0.3.tgz
+    - https://paologallinaharbur.github.io/shorturl/newrelic-agent-operator-0.0.3.tgz
     version: 0.0.3
 generated: "2023-12-22T10:31:11.173062+01:00"
