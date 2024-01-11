@@ -8,7 +8,8 @@ name: Release
 jobs:
   release-name-check:
     if: ${{ !startsWith(github.event.release.tag_name, 'chart/') }}
-    run: echo "prereleasing since it is not a chart related tag"
+    steps:
+     - run: echo "prereleasing since it is not a chart related tag"
   build:
     needs: [release-name-check]
     runs-on: ubuntu-latest
