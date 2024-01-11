@@ -1,14 +1,14 @@
-suite: test super agent deployment's fleet configurations
+suite: test super agent deployment's subagent configurations
 templates:
   - templates/deployment-superagent.yaml
   - templates/configmap-superagent-config.yaml
-  - templates/configmap-fleet-configs.yaml
+  - templates/configmap-subagent-configs.yaml
 release:
   name: my-release
   namespace: my-namespace
 tests:
 
-  - it: there are no fleet configurations by default
+  - it: there are no subagent configurations by default
     set:
       cluster: test
     asserts:
@@ -28,28 +28,31 @@ tests:
           value:
             - name: super-agent-config
               configMap:
-                name: my-release-super-agent-deployment-config
+                name: my-release-super-agent-deployment-superagent-config
                 items:
                   - key: config.yaml
                     path: config.yaml
             - name: var-lib-newrelic-super-agent
               emptyDir: {}
 
-  - it: fleet configurations template file mounts
+  - it: subagent configurations template file mounts
     set:
       cluster: test
       config:
-        fleet:
+        subAgents:
           test-0:
-            a: test
-            value: 0
+            content:
+              a: test
+              value: 0
           test-1:
-            a: test
-            value: 1
+            content:
+              a: test
+              value: 1
           test-2:
-            a: test
-            aYAML:
-              canI: HaveSomeYAML
+            content:
+              a: test
+              aYAML:
+                canI: HaveSomeYAML
     asserts:
       - template: templates/deployment-superagent.yaml
         equal:
@@ -58,13 +61,13 @@ tests:
             - name: super-agent-config
               mountPath: /etc/newrelic-super-agent
               readOnly: true
-            - name: fleet-configmap-my-release-super-agent-deployment-fleet-test-0
+            - name: my-release-super-agent-deployment-subagent-test-0
               mountPath: /etc/newrelic-super-agent/fleet/agents.d/test-0
               readOnly: true
-            - name: fleet-configmap-my-release-super-agent-deployment-fleet-test-1
+            - name: my-release-super-agent-deployment-subagent-test-1
               mountPath: /etc/newrelic-super-agent/fleet/agents.d/test-1
               readOnly: true
-            - name: fleet-configmap-my-release-super-agent-deployment-fleet-test-2
+            - name: my-release-super-agent-deployment-subagent-test-2
               mountPath: /etc/newrelic-super-agent/fleet/agents.d/test-2
               readOnly: true
             - mountPath: /var/lib/newrelic-super-agent
@@ -76,19 +79,19 @@ tests:
           value:
             - name: super-agent-config
               configMap:
-                name: my-release-super-agent-deployment-config
+                name: my-release-super-agent-deployment-superagent-config
                 items:
                   - key: config.yaml
                     path: config.yaml
-            - name: fleet-configmap-my-release-super-agent-deployment-fleet-test-0
+            - name: my-release-super-agent-deployment-subagent-test-0
               configMap:
-                name: my-release-super-agent-deployment-fleet-test-0
-            - name: fleet-configmap-my-release-super-agent-deployment-fleet-test-1
+                name: my-release-super-agent-deployment-subagent-test-0
+            - name: my-release-super-agent-deployment-subagent-test-1
               configMap:
-                name: my-release-super-agent-deployment-fleet-test-1
-            - name: fleet-configmap-my-release-super-agent-deployment-fleet-test-2
+                name: my-release-super-agent-deployment-subagent-test-1
+            - name: my-release-super-agent-deployment-subagent-test-2
               configMap:
-                name: my-release-super-agent-deployment-fleet-test-2
+                name: my-release-super-agent-deployment-subagent-test-2
             - name: var-lib-newrelic-super-agent
               emptyDir: {}
 
