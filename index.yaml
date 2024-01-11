@@ -33,6 +33,37 @@ entries:
     version: 0.0.3
   super-agent:
   - apiVersion: v2
+    created: "2024-01-11T18:06:41.489133135Z"
+    dependencies:
+    - condition: flux2.enabled
+      name: flux2
+      repository: https://fluxcd-community.github.io/helm-charts
+      version: 2.12.1
+    - name: common-library
+      repository: https://helm-charts.newrelic.com
+      version: 1.1.1
+    description: Bootstraps New Relic' Super Agent
+    digest: 8b4d281e47943d7238f9ca7f1b8be22910847a5a063084bd6e52fb219777f6ef
+    keywords:
+    - newrelic
+    - super-agent
+    maintainers:
+    - name: sigilioso
+      url: https://github.com/sigilioso
+    - name: gsanchezgavier
+      url: https://github.com/gsanchezgavier
+    - name: kang-makes
+      url: https://github.com/kang-makes
+    - name: marcsanmi
+      url: https://github.com/marcsanmi
+    - name: paologallinaharbur
+      url: https://github.com/paologallinaharbur
+    name: super-agent
+    type: application
+    urls:
+    - https://github.com/paologallinaharbur/shorturl/releases/download/chart/super-agent-0.0.2-beta/super-agent-0.0.2-beta.tgz
+    version: 0.0.2-beta
+  - apiVersion: v2
     created: "2024-01-11T18:03:39.157022191Z"
     dependencies:
     - condition: flux2.enabled
@@ -92,4 +123,32 @@ entries:
     urls:
     - https://github.com/paologallinaharbur/shorturl/releases/download/chart-super-agent-deployment-0.0.6-beta/super-agent-deployment-0.0.6-beta.tgz
     version: 0.0.6-beta
-generated: "2024-01-11T18:03:39.326557215Z"
+  - apiVersion: v2
+    appVersion: nightly
+    created: "2024-01-11T18:06:41.652698899Z"
+    dependencies:
+    - name: common-library
+      repository: https://helm-charts.newrelic.com
+      version: 1.1.1
+    description: A Helm chart to install New Relic Super agent on Kubernetes
+    digest: eae5f0f7be2c040dc489df8286aa1e5446105d98e615f19e4654862d38deca8f
+    keywords:
+    - newrelic
+    - super-agent
+    maintainers:
+    - name: sigilioso
+      url: https://github.com/sigilioso
+    - name: gsanchezgavier
+      url: https://github.com/gsanchezgavier
+    - name: kang-makes
+      url: https://github.com/kang-makes
+    - name: marcsanmi
+      url: https://github.com/marcsanmi
+    - name: paologallinaharbur
+      url: https://github.com/paologallinaharbur
+    name: super-agent-deployment
+    type: application
+    urls:
+    - https://github.com/paologallinaharbur/shorturl/releases/download/chart/super-agent-deployment-0.0.6-beta/super-agent-deployment-0.0.6-beta.tgz
+    version: 0.0.6-beta
+generated: "2024-01-11T18:06:41.652723975Z"
