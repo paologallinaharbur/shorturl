@@ -5,6 +5,7 @@ target-branch: main
 
 chart-repos:
   - newrelic=https://helm-charts.newrelic.com
+  - flux=https://fluxcd-community.github.io/helm-charts
 
 chart-dirs:
   - deployment/charts
