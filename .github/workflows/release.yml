@@ -1,0 +1,18 @@
+on:
+  release:
+    types:
+      - released
+    tags:
+      - '*'
+      - '!chart-*'
+
+# See https://docs.github.com/en/actions/using-jobs/using-concurrency
+name: Release
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    name: Upload to S3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
